@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return LayoutBuilder(
       builder: (context, size) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surface,
           //appbar
           appBar: AppBar(
             title: Text(
