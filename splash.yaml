@@ -1,14 +1,14 @@
 flutter_native_splash:
-  color: "#4169e1"
+  color: "#508cfa"
   image: assets/frame.png
-  color_dark: "#4169e1"
+  color_dark: "#508cfa"
   image_dark: assets/frame.png
   branding: assets/brandingSplash.png
   branding_mode: bottom
 
   android_12:
-    color: "#4169e1"
-    color_dark: "#4169e1"
+    color: "#508cfa"
+    color_dark: "#508cfa"
     image: assets/frame.png
     image_dark: assets/frame.png
     branding: assets/brandingSplash.png

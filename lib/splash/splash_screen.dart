@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flamingo/auth/login/login_screen.dart';
+import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
 import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -48,15 +48,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  SvgPicture.asset(
-                    'assets/flamingo.svg',
-                    width: size.maxWidth * 0.4,
-                    height: size.maxWidth * 0.4,
-                  ),
+                  FlamingoLogo(sizeWidth: size * 0.3, sizeHeight: size * 0.3),
                   const Spacer(),
                   Text(
                     'F L A M I N G O',
-                    style: titleStyle(context),
+                    style: splashTitleStyle(context),
                   ),
                   SizedBox(
                     height: size.maxHeight * 0.05,

@@ -1,19 +1,17 @@
-import 'package:flamingo/auth/forgot_my_password/forgot_my_password.dart';
-import 'package:flamingo/auth/login/body/login_body.dart';
-import 'package:flamingo/auth/signup/signup_screen.dart';
+import 'package:flamingo/auth/signup/body/signup_body.dart';
 import 'package:flamingo/widgets/buttons/cutom_text_button.dart';
 import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
 import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
@@ -27,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //appbar
           appBar: AppBar(
             title: Text(
-              'Log In',
+              'Sign Up',
               style: titleStyle(context),
             ),
             centerTitle: true,
@@ -45,31 +43,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       sizeWidth: size * 0.3,
                       sizeHeight: size * 0.3,
                     ),
-
                     SizedBox(
                       height: size.maxHeight * 0.03,
                     ),
 
-                    LoginBody(
+                    SignUpBody(
                       emailController: emailController,
                       passController: passController,
                       size: size,
                       obscureText: obscureText,
-                    ),
-
-                    SizedBox(
-                      height: size.maxHeight * 0.01,
-                    ),
-
-                    CustomTextButton(
-                      normalText: 'or',
-                      buttonText: 'I Forgot My Password',
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const ForgotMyPassword(),
-                        ),
-                      ),
                     ),
 
                     //Line
@@ -80,20 +62,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     //Line
 
-                    //Hesabınız yokmu alanı
+                    //Log In
                     CustomTextButton(
-                      normalText: "Don't have an account",
-                      buttonText: "Sign Up",
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const SignupScreen(),
-                        ),
-                      ),
+                      normalText: 'or',
+                      buttonText: 'Log In',
+                      onPressed: () => Navigator.pop(context),
                     ),
-
                     SizedBox(
-                      height: size.maxHeight * 0.05,
+                      height: size.maxHeight * 0.1,
                     ),
                   ],
                 ),
