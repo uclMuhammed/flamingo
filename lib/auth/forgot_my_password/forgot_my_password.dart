@@ -1,7 +1,7 @@
+import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/auth/forgot_my_password/body/fortgot_my_password_body.dart';
 import 'package:flamingo/widgets/buttons/cutom_text_button.dart';
 import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
-import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 
 class ForgotMyPassword extends StatefulWidget {
@@ -17,7 +17,6 @@ class _ForgotMyPasswordState extends State<ForgotMyPassword> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, size) {
       return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: Text(
             'Change My Pass',
@@ -32,7 +31,10 @@ class _ForgotMyPasswordState extends State<ForgotMyPassword> {
               child: Column(
                 children: [
                   //App Logo
-                  FlamingoLogo(sizeWidth: size * 0.3, sizeHeight: size * 0.3),
+                  FlamingoLogo(
+                    sizeWidth: size.maxWidth * 0.3,
+                    sizeHeight: size.maxWidth * 0.3,
+                  ),
                   SizedBox(
                     height: size.maxHeight * 0.03,
                   ),

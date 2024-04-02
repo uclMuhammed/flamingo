@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
-class CustomImage extends StatelessWidget {
-  const CustomImage(
+class CustomSvg extends StatelessWidget {
+  const CustomSvg(
       {super.key,
       required this.assets,
       required this.width,
-      required this.height,
-      required this.fit});
+      required this.height});
   final String assets;
   final double width;
   final double height;
-  final BoxFit fit;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
+    return SvgPicture.asset(
       assets,
       width: width,
       height: height,
-      fit: fit,
     );
   }
 }

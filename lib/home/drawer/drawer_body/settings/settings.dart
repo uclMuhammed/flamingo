@@ -1,5 +1,5 @@
+import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/widgets/change_theme_switch/change_theme_switch.dart';
-import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {

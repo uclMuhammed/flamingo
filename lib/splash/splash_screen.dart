@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/auth/login/login_screen.dart';
 import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
-import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -48,7 +48,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  FlamingoLogo(sizeWidth: size * 0.3, sizeHeight: size * 0.3),
+                  FlamingoLogo(
+                    sizeWidth: size.maxWidth * 0.3,
+                    sizeHeight: size.maxWidth * 0.3,
+                  ),
                   const Spacer(),
                   Text(
                     'F L A M I N G O',

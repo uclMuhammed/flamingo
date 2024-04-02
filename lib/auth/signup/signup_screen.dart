@@ -1,7 +1,7 @@
+import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/auth/signup/body/signup_body.dart';
 import 'package:flamingo/widgets/buttons/cutom_text_button.dart';
 import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
-import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -21,7 +21,6 @@ class _SignupScreenState extends State<SignupScreen> {
     return LayoutBuilder(
       builder: (context, size) {
         return Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.surface,
           //appbar
           appBar: AppBar(
             title: Text(
@@ -40,8 +39,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     //App Logo
 
                     FlamingoLogo(
-                      sizeWidth: size * 0.3,
-                      sizeHeight: size * 0.3,
+                      sizeWidth: size.maxWidth * 0.3,
+                      sizeHeight: size.maxWidth * 0.3,
                     ),
                     SizedBox(
                       height: size.maxHeight * 0.03,

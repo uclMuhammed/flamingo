@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:theme/theme/theme_provider/theme_provider.dart';
+import 'package:theme/theme/index.dart';
 
 class ChangeThemeSwitch extends StatelessWidget {
   const ChangeThemeSwitch({
@@ -9,10 +9,19 @@ class ChangeThemeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      value: Provider.of<ThemeProvider>(context, listen: true).isDarkMode,
-      onChanged: (value) =>
-          Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
+    final themeNotifier = Provider.of<ThemeProvider>(context);
+    return Row(
+      children: [
+        themeNotifier.isDarkMode
+            ? const Icon(Icons.dark_mode)
+            : const Icon(Icons.light_mode),
+        Switch(
+          value: themeNotifier.isDarkMode,
+          onChanged: (value) {
+            themeNotifier.toggleTheme();
+          },
+        ),
+      ],
     );
   }
 }

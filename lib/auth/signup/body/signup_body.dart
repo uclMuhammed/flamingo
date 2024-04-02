@@ -1,5 +1,5 @@
 import 'package:flamingo/widgets/buttons/custom_button.dart';
-import 'package:flamingo/widgets/texts/custom_text_field.dart';
+import 'package:flamingo/widgets/text_field/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class SignUpBody extends StatelessWidget {

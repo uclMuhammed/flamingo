@@ -1,4 +1,4 @@
-import 'package:flamingo/widgets/texts/texts.dart';
+import 'package:core/text_style/text_style.dart';
 import 'package:flutter/material.dart';
 
 class ShortcutButton extends StatelessWidget {

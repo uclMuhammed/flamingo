@@ -1,9 +1,9 @@
+import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/auth/forgot_my_password/forgot_my_password.dart';
 import 'package:flamingo/auth/login/body/login_body.dart';
 import 'package:flamingo/auth/signup/signup_screen.dart';
 import 'package:flamingo/widgets/buttons/cutom_text_button.dart';
 import 'package:flamingo/widgets/flamingo_logo/flamingo_logo.dart';
-import 'package:flamingo/widgets/texts/texts.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return LayoutBuilder(
       builder: (context, size) {
         return Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.surface,
           //appbar
           appBar: AppBar(
             title: Text(
@@ -42,8 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     //App Logo
 
                     FlamingoLogo(
-                      sizeWidth: size * 0.3,
-                      sizeHeight: size * 0.3,
+                      sizeWidth: size.maxWidth * 0.3,
+                      sizeHeight: size.maxWidth * 0.3,
                     ),
 
                     SizedBox(
