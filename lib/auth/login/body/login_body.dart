@@ -20,7 +20,7 @@ class LoginBody extends StatelessWidget {
       children: [
         //email TextFormField
         CustomTextField(
-          emailController: emailController,
+          controller: emailController,
           textInputType: TextInputType.emailAddress,
           suffix: const Icon(Icons.email_outlined),
           obscureText: false,
@@ -33,7 +33,7 @@ class LoginBody extends StatelessWidget {
 
         //Password TextFormField
         CustomTextField(
-          emailController: passController,
+          controller: passController,
           textInputType: TextInputType.name,
           obscureText: obscureText,
           suffixIcon: IconButton(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.emailController,
+    required this.controller,
     required this.label,
     required this.textInputType,
     required this.obscureText,
@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
     this.suffix,
   });
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final bool obscureText;
   final String? label;
   final TextInputType? textInputType;
@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: emailController,
+      controller: controller,
       obscureText: obscureText,
       keyboardType: textInputType!,
       style: contentStyle(context),

@@ -14,7 +14,7 @@ class ForgotMyPasswordBody extends StatelessWidget {
       children: [
         //email TextFormField
         CustomTextField(
-          emailController: emailController,
+          controller: emailController,
           textInputType: TextInputType.emailAddress,
           suffix: const Icon(Icons.email_outlined),
           obscureText: false,

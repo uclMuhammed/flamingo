@@ -1,5 +1,7 @@
 import 'package:core/extension/size/size.dart';
+import 'package:flamingo/home/event_show_page/chat/chat.dart';
 import 'package:flamingo/home/event_show_page/content/content.dart';
+import 'package:flamingo/home/event_show_page/delegate/delegate.dart';
 import 'package:flamingo/home/event_show_page/image/event_show_page_image.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +11,6 @@ class EventShowPage extends StatefulWidget {
   @override
   State<EventShowPage> createState() => _EventShowPageState();
 }
-
-ScrollController controller = ScrollController();
 
 class _EventShowPageState extends State<EventShowPage> {
   @override
@@ -30,7 +30,7 @@ class _EventShowPageState extends State<EventShowPage> {
                 return [
                   SliverAppBar(
                     automaticallyImplyLeading: false,
-                    expandedHeight: size.maxWidth,
+                    expandedHeight: size.maxHeight * 0.3,
                     pinned: false,
                     floating: false,
                     flexibleSpace: FlexibleSpaceBar(
@@ -70,43 +70,5 @@ class _EventShowPageState extends State<EventShowPage> {
         );
       },
     );
-  }
-}
-
-class MyDelegate extends SliverPersistentHeaderDelegate {
-  MyDelegate(this.tabBar);
-  final TabBar tabBar;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      child: tabBar,
-    );
-  }
-
-  @override
-  double get maxExtent => tabBar.preferredSize.height;
-
-  @override
-  double get minExtent => tabBar.preferredSize.height;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
-  }
-}
-
-class EventChat extends StatefulWidget {
-  const EventChat({super.key});
-
-  @override
-  State<EventChat> createState() => _EventChatState();
-}
-
-class _EventChatState extends State<EventChat> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

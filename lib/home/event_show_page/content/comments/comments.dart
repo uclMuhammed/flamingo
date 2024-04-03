@@ -3,7 +3,6 @@ import 'package:core/extension/size/size.dart';
 import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/widgets/custom_image/custom_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Comments extends StatelessWidget {
   const Comments({
