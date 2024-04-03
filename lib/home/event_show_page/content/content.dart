@@ -8,7 +8,9 @@ import 'package:flamingo/widgets/buttons/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class EventContent extends StatefulWidget {
-  const EventContent({super.key});
+  const EventContent({
+    super.key,
+  });
 
   @override
   State<EventContent> createState() => _EventContentState();
@@ -27,7 +29,9 @@ class _EventContentState extends State<EventContent> {
   }
 
   void onRatingChanged(double value) {
-    rating = value;
+    setState(() {
+      rating = value;
+    });
   }
 
   void saveRating() {
@@ -49,36 +53,60 @@ class _EventContentState extends State<EventContent> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Dashbord(
-            calculateAvarageRating: calculateAvarageRating(),
+    return LayoutBuilder(
+      builder: (context, size) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Dashbord(
+                calculateAvarageRating: calculateAvarageRating(),
+                size: size.maxWidth,
+              ),
+              //Line
+              Container(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                width: size.maxWidth,
+                height: 2,
+              ).paddingSymetric(context.width * 0, context.width * 0.05),
+              //Line
+              Text(
+                'Plaj konserimize herkezi bekleriz',
+                style: normalStyle(context),
+              ).paddingAll(context.width * 0.05),
+              CustomButton(
+                onPressed: () {
+                  _toggleJoinStatus();
+                },
+                text: joined ? 'A Y R I L' : 'K A T I L',
+                sizeWidth: context.width * 0.35,
+                sizeHeight: context.height * 0.05,
+                borderRadius: 10,
+                color: joined ? Colors.red : null,
+              ).paddingAll(context.width * 0.05),
+              //Line
+              Container(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                width: size.maxWidth,
+                height: 2,
+              ).paddingSymetric(context.width * 0, context.width * 0.05),
+              //Line
+              Ratings(
+                saveRating: saveRating,
+                rating: rating,
+                onRatingChanged: onRatingChanged,
+              ),
+              //Line
+              Container(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                width: size.maxWidth,
+                height: 2,
+              ).paddingSymetric(context.width * 0, context.width * 0.05),
+              //Line
+              const Comments(),
+            ],
           ),
-          Text(
-            'Plaj konserimize herkezi bekleriz',
-            style: normalStyle(context),
-          ),
-          const SizedBox().paddingTop(context.height * 0.05),
-          Ratings(
-            saveRating: saveRating,
-            rating: rating,
-            onRatingChanged: onRatingChanged,
-          ),
-          const SizedBox().paddingTop(context.height * 0.01),
-          CustomButton(
-            onPressed: () {
-              _toggleJoinStatus();
-            },
-            text: joined ? 'A Y R I L' : 'K A T I L',
-            sizeWidth: context.width * 0.3,
-            sizeHeight: context.height * 0.05,
-            borderRadius: 10,
-            color: joined ? Colors.red : null,
-          ).paddingTop(context.width * 0.05),
-          const Comments(),
-        ],
-      ).paddingTop(context.width * 0.3),
+        );
+      },
     );
   }
 }

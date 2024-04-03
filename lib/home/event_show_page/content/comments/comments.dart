@@ -3,6 +3,7 @@ import 'package:core/extension/size/size.dart';
 import 'package:core/text_style/text_style.dart';
 import 'package:flamingo/widgets/custom_image/custom_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Comments extends StatelessWidget {
   const Comments({
@@ -38,9 +39,24 @@ class Comments extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Kullanıcı adı',
-                        style: normalStyle(context),
+                      Row(
+                        children: [
+                          Text(
+                            'Kullanıcı adı',
+                            style: normalStyle(context),
+                          ),
+                          Row(
+                            children: List.generate(
+                              5,
+                              (index) {
+                                final starColor =
+                                    index < 3 ? Colors.amber : Colors.grey;
+                                return Icon(Icons.star_rounded,
+                                    size: 20, color: starColor);
+                              },
+                            ),
+                          )
+                        ],
                       ),
                       Text(
                         'İçerik',

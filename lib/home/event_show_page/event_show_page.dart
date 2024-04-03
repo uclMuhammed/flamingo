@@ -1,3 +1,4 @@
+import 'package:core/extension/size/size.dart';
 import 'package:flamingo/home/event_show_page/content/content.dart';
 import 'package:flamingo/home/event_show_page/image/event_show_page_image.dart';
 import 'package:flutter/material.dart';
@@ -14,56 +15,87 @@ ScrollController controller = ScrollController();
 class _EventShowPageState extends State<EventShowPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DefaultTabController(
-        length: 2,
-        child: LayoutBuilder(
-          builder: (context, size) {
-            return CustomScrollView(
-              controller: controller,
-              slivers: <Widget>[
-                SliverAppBar(
-                  expandedHeight: size.maxWidth,
-                  floating: false,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    titlePadding: const EdgeInsets.only(bottom: 50),
-                    title: const Text('Plaj Konseri'),
-                    centerTitle: true,
-                    background: ShowPageImage(
-                      sizeW: size.maxWidth,
-                      sizeH: size.maxHeight,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints size) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Plaj Konseri'),
+            centerTitle: true,
+          ),
+          body: DefaultTabController(
+            length: 2,
+            child: NestedScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              headerSliverBuilder: (context, isScrolled) {
+                return [
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    expandedHeight: size.maxWidth,
+                    pinned: false,
+                    floating: false,
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: ShowPageImage(
+                        sizeW: context.width,
+                        sizeH: context.height,
+                      ),
                     ),
                   ),
-                  bottom: const TabBar(
-                    tabs: [
-                      Tab(
-                        text: 'İçerik',
+                  SliverPersistentHeader(
+                    floating: true,
+                    pinned: true,
+                    delegate: MyDelegate(
+                      const TabBar(
+                        tabs: [
+                          Tab(
+                            text: 'Etkinlik',
+                          ),
+                          Tab(
+                            text: 'Mesajlaşma',
+                          )
+                        ],
                       ),
-                      Tab(
-                        text: 'Mesajlaşma',
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-                const SliverFillRemaining(
-                  child: TabBarView(
-                    children: [
-                      EventContent(),
-                      EventChat(),
-                    ],
-                  ),
-                )
-              ],
-            );
-          },
-        ),
-      ),
+                ];
+              },
+              body: const TabBarView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  EventContent(),
+                  EventChat(),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
 
+class MyDelegate extends SliverPersistentHeaderDelegate {
+  MyDelegate(this.tabBar);
+  final TabBar tabBar;
 
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      child: tabBar,
+    );
+  }
+
+  @override
+  double get maxExtent => tabBar.preferredSize.height;
+
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+}
 
 class EventChat extends StatefulWidget {
   const EventChat({super.key});

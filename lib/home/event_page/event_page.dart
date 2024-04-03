@@ -38,10 +38,8 @@ class EventPage extends StatelessWidget {
             Text(
               eventTitle,
               style: titleStyle(context),
-            ).paddingAll(
-              context.width * 0.05,
             ),
-            SizedBox(width: sizeW * 0.3),
+            SizedBox(width: sizeW * 0.4),
             IconButton(
               onPressed: () {},
               icon: Icon(
@@ -51,7 +49,7 @@ class EventPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
+        ).paddingAll(context.width * 0.01),
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -87,7 +85,7 @@ class EventPage extends StatelessWidget {
                 CustomButton(
                     onPressed: () {},
                     text: 'Takip Et',
-                    sizeWidth: context.width * 0.28,
+                    sizeWidth: context.width * 0.35,
                     sizeHeight: context.height * 0.01,
                     borderRadius: 200)
               ],
@@ -95,7 +93,7 @@ class EventPage extends StatelessWidget {
             Text(
               eventContent,
               overflow: TextOverflow.ellipsis,
-              style: normalStyle(context),
+              style: contentStyle(context),
             ).paddingSymetric(context.height * 0, context.width * 0.12),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
